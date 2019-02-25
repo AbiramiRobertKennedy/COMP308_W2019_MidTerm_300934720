@@ -31,7 +31,8 @@ router.get('/add', (req, res, next) => {
      ***********************/
 
     res.render('books/details', {
-      title: 'Add new book'
+      title: 'Add new book',
+      books: book
   });
 
 });
@@ -82,7 +83,7 @@ router.get('/edit/:id', (req, res, next) => {
       }
       else{
         //Edit page redirect
-        res.render('books/edit',{
+        res.render('books/details',{
           title: 'Edit a book',
           books: bookObj
         });
