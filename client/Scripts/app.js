@@ -106,9 +106,9 @@ $.fn.pageMe = function(opts){
 // IIFE
 (function(){
   $(".btn-danger").click(function(event){
-    if(!confirm("Are you sure?")) {
+    if(!confirm("Click OK to delete")) {
       event.preventDefault();
-      window.location.assign("/games");
+      window.location.assign("/books");
     }
   });
 
