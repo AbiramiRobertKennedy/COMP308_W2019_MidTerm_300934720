@@ -68,7 +68,7 @@ router.post('/add', (req, res, next) => {
 });
 
 // GET the Book Details page in order to edit an existing Book
-router.get('/edit/:id', (req, res, next) => {
+router.get('/:id', (req, res, next) => {
 
     /************************
      * ADDED EDIT CODE HERE *
@@ -92,7 +92,7 @@ router.get('/edit/:id', (req, res, next) => {
 });
 
 // POST - process the information passed from the details form and update the document
-router.post('/edit/:id', (req, res, next) => {
+router.post('/:id', (req, res, next) => {
 
     /************************
      * ADDED EDIT CODE HERE *
@@ -123,9 +123,9 @@ router.post('/edit/:id', (req, res, next) => {
 // GET - process the delete by user id
 router.get('/delete/:id', (req, res, next) => {
 
-    /*****************
-     * ADD CODE HERE *
-     *****************/
+    /**************************
+     * ADDED DELETE CODE HERE *
+     **************************/
 });
 
 
