@@ -1,3 +1,8 @@
+/* /SERVER/MODELS/INDEX.JS*/
+/* ABIRAMI KENNEDY        */
+/* 300934720              */
+/* MY FAVOURITE BOOKS     */
+
 // modules required for routing
 let express = require('express');
 let router = express.Router();

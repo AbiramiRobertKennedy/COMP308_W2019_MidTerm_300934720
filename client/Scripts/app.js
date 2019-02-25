@@ -1,4 +1,7 @@
-/* custom JS goes here */
+/* /CLIENT/SCRIPTS/APP.JS */
+/* ABIRAMI KENNEDY        */
+/* 300934720              */
+/* MY FAVOURITE BOOKS     */
 
 /* pagination code from http://www.bootply.com/lxa0FF9yhw */
 $.fn.pageMe = function(opts){
@@ -103,12 +106,13 @@ $.fn.pageMe = function(opts){
     }
 };
 
-// IIFE
+// Delete confirmation for removing database values
 (function(){
   $(".btn-danger").click(function(event){
     if(!confirm("Click OK to delete")) {
       event.preventDefault();
-      window.location.assign("/books");
+      //Redirect to books page
+      window.location.assign("/books"); 
     }
   });
 

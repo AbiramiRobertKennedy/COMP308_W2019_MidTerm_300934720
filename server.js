@@ -1,3 +1,8 @@
+/* SERVER.JS              */
+/* ABIRAMI KENNEDY        */
+/* 300934720              */
+/* MY FAVOURITE BOOKS     */
+
 let app = require('./server/app');
 let debug = require('debug')('comp308-w2019-midterm:server');
 let http = require('http');

@@ -1,3 +1,8 @@
+/* /SERVER/ROUTES/BOOKS.JS */
+/* ABIRAMI KENNEDY        */
+/* 300934720              */
+/* MY FAVOURITE BOOKS     */
+
 // modules required for routing
 let express = require('express');
 let router = express.Router();
@@ -11,6 +16,7 @@ router.get('/', (req, res, next) => {
   // find all books in the books collection
   book.find( (err, books) => {
     if (err) {
+      //Error log
       return console.error(err);
     }
     else {
@@ -32,6 +38,7 @@ router.get('/add', (req, res, next) => {
 
     res.render('books/details', {
       title: 'Add new book',
+      //Initiate book model to books collection
       books: book
   });
 
@@ -45,7 +52,7 @@ router.post('/add', (req, res, next) => {
     /***********************
      * ADDED ADD CODE HERE *
      ***********************/
-
+    //Initiation
     let newBook = book({
       "Title":req.body.title,
       "Price": req.body.price,
@@ -55,11 +62,12 @@ router.post('/add', (req, res, next) => {
 
   book.create(newBook, (err, book) => {
       if (err) {
+          //Error log
           console.log(err);
           res.end(err);
       }
       else {
-          //Refresh
+          //Refresh the page
           res.redirect('/books');
       }
 
@@ -78,6 +86,7 @@ router.get('/:id', (req, res, next) => {
      //console.log(id); --Testing
      book.findById(id, (err,bookObj)=>{
       if(err){
+        //Error log
         console.log(err);
         res.end(err);
       }
@@ -85,6 +94,7 @@ router.get('/:id', (req, res, next) => {
         //Edit page redirect
         res.render('books/details',{
           title: 'Edit a book',
+          //Initiate bookObj model to books collection
           books: bookObj
         });
       }
@@ -99,6 +109,7 @@ router.post('/:id', (req, res, next) => {
      ************************/
 
      let id=req.params.id;
+     //Initiation
      let updateBook = book({
        "_id":id,
        "Title":req.body.title,
@@ -109,11 +120,12 @@ router.post('/:id', (req, res, next) => {
 
      book.update({_id: id}, updateBook, (err)=> {
        if(err){
+         //Error log
          console.log(err);
          res.end(err);
        }
        else {
-         //Refresh
+         //Refresh the page
          res.redirect("/books")
        }
      })
@@ -131,11 +143,12 @@ router.get('/delete/:id', (req, res, next) => {
 
      book.remove({_id: id}, (err) =>{
        if(err){
+         //Error log
          console.log(err);
          res.end(err);
        }
        else{
-         //Refresh
+         //Refresh the page
          res.redirect('/books');
        }
      })

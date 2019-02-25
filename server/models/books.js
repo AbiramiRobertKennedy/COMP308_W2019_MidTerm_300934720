@@ -1,3 +1,8 @@
+/* /SERVER/MODELS/BOOKS.JS */
+/* ABIRAMI KENNEDY        */
+/* 300934720              */
+/* MY FAVOURITE BOOKS     */
+
 let mongoose = require('mongoose');
 
 // create a model class
