@@ -8,11 +8,23 @@ let express = require('express');
 let router = express.Router();
 let mongoose = require('mongoose');
 
+
+//Authorization to view book list
+function requireAuth(req, res, next){
+  //test - if user is logged in
+  if(!req.isAuthenticated())
+  {
+    return res.redirect('/login');
+  }
+  
+  next();
+}
+
 // define the book model
 let book = require('../models/books');
 
 /* GET books List page. READ */
-router.get('/', (req, res, next) => {
+router.get('/', requireAuth, (req, res, next) => {
   // find all books in the books collection
   book.find( (err, books) => {
     if (err) {
@@ -22,7 +34,8 @@ router.get('/', (req, res, next) => {
     else {
       res.render('books/index', {
         title: 'Books',
-        books: books
+        books: books,
+        displayName: req.user ? req.user.displayName : ''
       });
     }
   });
@@ -30,7 +43,7 @@ router.get('/', (req, res, next) => {
 });
 
 //  GET the Book Details page in order to add a new Book
-router.get('/add', (req, res, next) => {
+router.get('/add', requireAuth, (req, res, next) => {
 
     /***********************
      * ADDED ADD CODE HERE *
@@ -39,13 +52,14 @@ router.get('/add', (req, res, next) => {
     res.render('books/details', {
       title: 'Add new book',
       //Initiate book model to books collection
-      books: book
+      books: book,
+      displayName: req.user ? req.user.displayName : ''
   });
 
 });
 
 // POST process the Book Details page and create a new Book - CREATE
-router.post('/add', (req, res, next) => {
+router.post('/add',requireAuth, (req, res, next) => {
 
   //console.log(req.body); --Testing
 
@@ -76,7 +90,7 @@ router.post('/add', (req, res, next) => {
 });
 
 // GET the Book Details page in order to edit an existing Book
-router.get('/:id', (req, res, next) => {
+router.get('/:id',requireAuth, (req, res, next) => {
 
     /************************
      * ADDED EDIT CODE HERE *
@@ -95,7 +109,8 @@ router.get('/:id', (req, res, next) => {
         res.render('books/details',{
           title: 'Edit a book',
           //Initiate bookObj model to books collection
-          books: bookObj
+          books: bookObj,
+          displayName: req.user ? req.user.displayName : ''
         });
       }
      });

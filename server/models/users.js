@@ -6,6 +6,8 @@
 let mongoose = require('mongoose');
 let passportLocalMongoose = require('passport-local-mongoose');
 
+
+//User schema for login and register
 let userSchema = new mongoose.Schema({
     username: {
         type: String,
